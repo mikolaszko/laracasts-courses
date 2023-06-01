@@ -28,27 +28,28 @@
             $string = "You haven't read \"$name\".";
         }
         $books = [
-            "Do Androids Dream of Electric Sheep?",
-            "Neuromancer",
-            "Brave New World"
+            [
+               'name' => 'Do Androids Dream of Electric Sheep?',
+               'author' => "Philip K. Dick",
+               'purchase' => 'https://google.com',
+            ],
+            [
+               'name' => 'Brave New World',
+               'author' => "Hello there",
+               'purchase' => 'https://google.com',
+            ],
         ];
     ?>
     <h1>
         <?= $string ?>
     </h1>
     <h4>Recommended Books</h4>
-    <!-- long way -->
-    <!--<ul>
-        <?php foreach ($books as $book) {
-            echo "<li>$book</li>";
-        } ?>
-    </ul>-->
-    <!-- shorthand -->
     <ul>
         <?php foreach ($books as $book) : ?>
-            <li><?= $book ?></li>
+            <li><?= $book['name'] ?></li>
         <?php endforeach; ?>
     </ul>
+    <p><?= $books[0] ?></p>
 </body>
 </html>
 
