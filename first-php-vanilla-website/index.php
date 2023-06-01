@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>My Website</title>
-    <meta name="description" content="My Website">
+    <title>my website</title>
+    <meta name="description" content="my website">
     <meta name="author" content="mikolaszko">
     <style>
         body {
@@ -17,39 +17,70 @@
 </head>
 <body>
     <?php
-        $name = "Dark Matter";
+        $name = "dark matter";
         $read = true;
         $string;
         
 
         if ($read) {
-            $string = "You have read \"$name\".";
+            $string = "you have read \"$name\".";
         } else {
-            $string = "You haven't read \"$name\".";
+            $string = "you haven't read \"$name\".";
         }
+
+
         $books = [
-            [
-               'name' => 'Do Androids Dream of Electric Sheep?',
-               'author' => "Philip K. Dick",
-               'purchase' => 'https://google.com',
+                    [
+                'name' => 'do androids dream of electric sheep?',
+                'author' => "philip k. dick",
+                'purchase' => 'https://google.com',
+                'release_year' => 1968
             ],
             [
-               'name' => 'Brave New World',
-               'author' => "Hello there",
-               'purchase' => 'https://google.com',
+                'name' => 'brave new world',
+                'author' => "Aldous huxley",
+                'purchase' => 'https://google.com',
+                'release_year' => 1931
+            ],
+            [
+                'name' => 'The Martian',
+                'author' => "Andy Weir",
+                'purchase' => 'https://google.com',
+                'release_year' => 2011 
+            ],
+            [
+                'name' => 'Project Hail Mary',
+                'author' => "Andy Weir",
+                'purchase' => 'https://google.com',
+                'release_year' => 2021 
             ],
         ];
+        //lambda function -> fully valid but redundant
+        $filter = function (array $items, $fn) {
+            $filteredItems = [];
+            foreach ($items as $item) {
+                if ($fn($item)) {
+                    $filteredItems[] = $item;
+                } 
+            }
+            return $filteredItems;
+        };
+
+        //php build in array function
+        $filteredBooks = array_filter($books, function ($book) {
+            return $book['release_year'] >= 1950;
+        });
     ?>
-    <h1>
-        <?= $string ?>
-    </h1>
-    <h4>Recommended Books</h4>
+
+
+    <h4>recommended books</h4>
     <ul>
-        <?php foreach ($books as $book) : ?>
-            <li><?= $book['name'] ?></li>
+        <?php foreach ($filteredBooks as $book) : ?>
+            <a href="<?= $book['purchase'] ?>">
+                <li><?= $book['name'] ?> (<?= $book['release_year'] ?>)</li>
+            </a>
         <?php endforeach; ?>
     </ul>
-    <p><?= $books[0] ?></p>
 </body>
 </html>
 
