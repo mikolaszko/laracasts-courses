@@ -15,6 +15,8 @@
               class="<?= isUrl("/about") ? 'bg-gray-900 text-white' : 'text-gray-300' ?> hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">About</a>
             <a href="/contact"
               class="<?= isUrl("/contact") ? 'bg-gray-900 text-white' : 'text-gray-300' ?> hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+            <a href="/notes"
+              class="<?= isUrl("/notes") ? 'bg-gray-900 text-white' : 'text-gray-300' ?> hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">Notes</a>
           </div>
         </div>
       </div>
