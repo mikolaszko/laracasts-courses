@@ -10,7 +10,7 @@ $routes = [
 ];
 function abort($status = 404) {
     http_response_code($status);
-    require 'views/{$status}.php';
+    require "views/{$status}.php";
     die();
 }
 
